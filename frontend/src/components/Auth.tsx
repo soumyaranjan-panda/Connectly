@@ -53,7 +53,7 @@ const Auth = ({ type }: authProp) => {
                     ) : (
                         <LabelledInput
                             label={"Name"}
-                            placeholder={"Name"}
+                            placeholder={"Name: Optional"}
                             onChange={(e) => {
                                 setPostInput({
                                     ...postInput,
@@ -64,7 +64,7 @@ const Auth = ({ type }: authProp) => {
                     )}
                     <LabelledInput
                         label={"Email"}
-                        placeholder={"Email"}
+                        placeholder={"Email: soumya@gmail.com"}
                         onChange={(e) => {
                             setPostInput({
                                 ...postInput,
@@ -74,7 +74,7 @@ const Auth = ({ type }: authProp) => {
                     />
                     <LabelledInput
                         label={"Password"}
-                        placeholder={"Password"}
+                        placeholder={"Password: minimun 8 letters"}
                         onChange={(e) => {
                             setPostInput({
                                 ...postInput,
