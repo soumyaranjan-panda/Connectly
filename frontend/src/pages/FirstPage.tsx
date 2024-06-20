@@ -8,18 +8,32 @@ export default function Component() {
                     <MountainIcon className="h-6 w-6" />
                 </Link>
                 <nav className="ml-auto flex gap-4 sm:gap-6">
-                    <Link
-                        to={"/signin"}
-                        className="text-sm font-medium hover:underline underline-offset-4"
-                    >
-                        Sign In
-                    </Link>
-                    <Link
-                        to={"/signup"}
-                        className="text-sm font-medium hover:underline underline-offset-4"
-                    >
-                        Sign Up
-                    </Link>
+                    {localStorage.getItem("token") ? (
+                        <Link
+                            to={"/"}
+                            onClick={() => {
+                                localStorage.removeItem("token");
+                            }}
+                            className="text-sm font-medium hover:underline underline-offset-4"
+                        >
+                            Sign Out
+                        </Link>
+                    ) : (
+                        <>
+                            <Link
+                                to={"/signin"}
+                                className="text-sm font-medium hover:underline underline-offset-4"
+                            >
+                                Sign In
+                            </Link>
+                            <Link
+                                to={"/signup"}
+                                className="text-sm font-medium hover:underline underline-offset-4"
+                            >
+                                Sign Up
+                            </Link>
+                        </>
+                    )}
                 </nav>
             </header>
             <main className="flex-1">
@@ -64,7 +78,8 @@ export default function Component() {
                                 <div>
                                     <a
                                         type="button"
-                                        href="https://github.com/soumyaranjan-panda/Connectly" target="_blank"
+                                        href="https://github.com/soumyaranjan-panda/Connectly"
+                                        target="_blank"
                                         className="text-white bg-gray-800 hover:bg-gray-900   font-medium rounded-full text-sm px-5 py-2.5 me-2  "
                                     >
                                         GitHub
