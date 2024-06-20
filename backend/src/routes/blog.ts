@@ -40,6 +40,7 @@ blogRouter.use('/*', async (c, next) => {
 
 blogRouter.post('/', async (c) => {
     const body = await c.req.json()
+    console.log(body);
     const prisma = new PrismaClient({
         datasourceUrl: c.env.DATABASE_URL,
     }).$extends(withAccelerate());
@@ -54,7 +55,7 @@ blogRouter.post('/', async (c) => {
         data: {
             title: body.title,
             content: body.content,
-            published: true,
+            published: new Date(),
             author_id: c.get('userId')
         }
     })
@@ -97,7 +98,19 @@ blogRouter.get('/bulk', async (c) => {
     }).$extends(withAccelerate());
 
     try {
-        const posts = await prisma.post.findMany()
+        const posts = await prisma.post.findMany({
+            select: {
+                content: true,
+                title: true,
+                id: true,
+                author: {
+                    select: {
+                        name: true
+                    }
+                },
+                published: true
+            }
+        })
         return c.json({ posts })
     } catch (error) {
         c.status(403)
@@ -115,6 +128,17 @@ blogRouter.get('/:id', async (c) => {
 
     try {
         const post = await prisma.post.findFirst({
+            select: {
+                content: true,
+                title: true,
+                id: true,
+                author: {
+                    select: {
+                        name: true
+                    }
+                },
+                published: true
+            },
             where: {
                 id: parseInt(id)
             }
@@ -127,5 +151,3 @@ blogRouter.get('/:id', async (c) => {
         })
     }
 })
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUzMTk3NjRmLWUwOTgtNGJlMS04MjM1LTc0ZTBlYzI4YjA4YSJ9.OsFUAkxOg4uQvGZkd4UZt-FFD_5o17VjFDYOe59OckA
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI0ZTRmOWQ3LWZlNTctNDM5OS04MTMxLTVlMDlmYmRmMWY0MyJ9.fM2Fb2HIlumIO36nbs-l3WhFOzqcoMaxBq0k-ipPRKI
