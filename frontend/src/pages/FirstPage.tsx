@@ -18,7 +18,7 @@ export default function Component() {
                         to={"/signup"}
                         className="text-sm font-medium hover:underline underline-offset-4"
                     >
-                        Sign In
+                        Sign Up
                     </Link>
                 </nav>
             </header>

@@ -22,7 +22,7 @@ const FullBlog = ({ blog }: { blog: Blog }) => {
                 </div>
                 <div></div>
                 <div className=" col-span-3">
-                    <div className=" flex flex-col justify-between h-1/4">
+                    <div className=" flex flex-col justify-between gap-3 h-1/4">
                         <div>
                             <div className=" text-slate-600 text-lg">
                                 Author
