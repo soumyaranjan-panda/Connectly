@@ -1,6 +1,8 @@
+import { useState } from "react";
 import img from "../assets/OIG1.jpeg";
 import { Link } from "react-router-dom";
 export default function Component() {
+    const [click, setClicked] = useState(false)
     return (
         <div className="flex flex-col h-screen overflow-y-scroll no-scrollbar">
             <header className="px-4 lg:px-6 h-14 flex items-center bg-slate-200 p-4 sticky top-0 opacity-80">
@@ -13,6 +15,7 @@ export default function Component() {
                             to={"/"}
                             onClick={() => {
                                 localStorage.removeItem("token");
+                                setClicked(!click)
                             }}
                             className="text-sm font-medium hover:underline underline-offset-4"
                         >
