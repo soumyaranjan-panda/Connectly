@@ -27,6 +27,7 @@ const Auth = ({ type }: authProp) => {
             localStorage.setItem("token", jwt.jwt);
             navigate("/blogs");
         } catch (e) {
+            alert("Enter correct email password or Sign Up")
             console.log("Some error");
             console.error(e);
         } finally {
