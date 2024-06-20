@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { SignupInput, SigninInput } from "@soumrnjn/connectly-common/dist";
 import { BACKEND_URL } from "../config";
 import axios from "axios";
-import { Box, CircularProgress } from "@mui/material";
+import { Box } from "@mui/material";
 import LinearIndeterminate from "./Loader";
 
 type authProp = {

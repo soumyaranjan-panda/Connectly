@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Avatar } from "./BlogCard";
 import img from "../assets/OIG1.jpeg";
 
 const AppBar = () => {
