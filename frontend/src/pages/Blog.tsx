@@ -19,7 +19,7 @@ const Blog = () => {
     return (
         <div>
             <AppBar />
-            <div className="flex flex-col lg:flex-row justify-evenly p-4">
+            <div className="flex flex-col lg:flex-row justify-evenly">
                 <div className="flex justify-center w-full lg:w-2/3 border-r-0 lg:border-r-2 mb-4 lg:mb-0">
                     <div className="flex flex-col items-center max-w-xl w-full">
                         {blogs.map((blog) => (
